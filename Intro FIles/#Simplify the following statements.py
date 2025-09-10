@@ -23,3 +23,10 @@ a and (not b) or (not a) or b
 
 #For what values of "a" and "b" is the following False/True?
 not((a or b) and not (b or not a or not b))
+not((a or b) and not (True))
+not((a or b) and False)
+not(False)
+True
+
+#Tautology always evaluates to true
+#Contraditction always evaluates to false
