@@ -5,6 +5,8 @@ y = y//x
 z = x + x/4
 y = y**((y*y)%3)
 
-x = 1
-y =
-z = 1.25
+y = 5
+x = -(-y//2)
+z = max(min(4, y/2), x)
+x = (y-x)**(x**z-y**2)**(y-x)
+print(x, y, z)

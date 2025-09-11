@@ -1,11 +1,8 @@
-print("imd3_a0 Program")
+#Define function to calculate area from width and length
+def area(width, length):
+    return width * length
 
-#User input width and length
-width = int(input("Please enter the width of the rectangle: "))
-length = int(input("Please enter the length of the rectangle: "))
-
-
-#calculate the area and print result
-print("The area of the rectangle is: ", width * length)
+#Print value of area function
+print(area(6, 7))
 
 input("Please press enter to terminate.")
