@@ -1,3 +1,4 @@
+"""
 myJavaVariable = 9
 def my_function(x, y):
     return x + y
@@ -38,3 +39,20 @@ def f4(x):
     return x
     print(x)
     return x
+
+def pizzas_to_order(adults, children):
+    total_slices = 3*adults + children
+    return total_slices//8 + min(1, total_slices%8)
+
+x = 5
+
+def my_fun(y):
+    return y + x
+
+print(my_fun(6))
+"""
+
+y = 5
+def my_fun(y):
+    y = y+1
+    return y
