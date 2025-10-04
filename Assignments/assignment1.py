@@ -15,8 +15,20 @@ def is_valid_number(num: str) -> bool:
     >>> is_valid_number("abc")
     False
     """
-    #TODO
-    return
+    if not num:
+        return False
+
+    start_index = 1 if num.startswith("-") else 0
+
+    if start_index == len(num):
+        return False
+
+    if num.count(".") > 1:
+        return False
+
+    remaining = num[start_index:].replace('.', '')
+
+    return remaining.isdigit() and remaining != ""
 
 
 def is_valid_term(term: str) -> bool:
@@ -39,8 +51,34 @@ def is_valid_term(term: str) -> bool:
     >>> is_valid_term("7x^ 8.8")
     False
     """
-    #TODO
-    return
+    if not term:
+        return False
+
+    if 'x' not in term:
+        return is_valid_number(term)
+
+    if '*' in term or 'y' in term or ' ' in term:
+        return False
+
+    parts = term.split('x')
+
+    if len(parts) != 2:
+        return False
+
+    coef = parts[0] if parts[0] and parts[0] != '-' else parts[0] + '1'
+
+    if not is_valid_number(coef):
+        return False
+
+    if parts[1] == '':
+        return True
+
+    if not parts[1].startswith('^') or len(parts[1]) == 1:
+        return False
+
+    exp = parts[1][1:]
+
+    return exp.isdigit() and exp != '0'
 
     
 def approx_equal(x: float, y: float, tol: float) -> bool:
@@ -56,8 +94,7 @@ def approx_equal(x: float, y: float, tol: float) -> bool:
     >>> approx_equal(0.999, 1, 0.0001)
     False
     """
-    #TODO
-    return
+    return abs(x - y) <= tol
 
 
 def degree_of(term: str) -> int:
@@ -72,8 +109,13 @@ def degree_of(term: str) -> int:
     >>> degree_of("252.192")
     0
     """
-    #TODO
-    return
+    if 'x' not in term:
+        return 0
+
+    if '^' not in term:
+        return 1
+
+    return int(term.split('^')[1])
 
 
 def get_coefficient(term: str) -> float:
@@ -88,8 +130,17 @@ def get_coefficient(term: str) -> float:
     >>> get_coefficient("252.192")
     252.192
     """
-    #TODO
-    return
+    if 'x' not in term:
+        return float(term)
+
+    coef = term.split('x')[0]
+
+    if coef == '' or coef == '+':
+        return 1.0
+    if coef == '-':
+        return -1.0
+
+    return float(coef)
 
 
 
